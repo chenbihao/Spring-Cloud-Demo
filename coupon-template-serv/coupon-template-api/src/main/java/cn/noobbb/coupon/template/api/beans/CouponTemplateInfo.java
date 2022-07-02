@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotNull;
 
 /**
- * 优惠券模板
+ * 优惠券模板 VO
  */
 @Data
 @NoArgsConstructor
@@ -17,6 +17,10 @@ import javax.validation.constraints.NotNull;
 @Builder
 public class CouponTemplateInfo {
 
+    /**
+     * id      tips:尽可能减少级联配置，用单表查询取而代之。
+     *              过深的级联层级所带来的 DB 层压力可能会在洪峰流量下被急剧放大，而 DB 恰恰是最不抗压的一环。
+     */
     private Long id;
 
     @NotNull

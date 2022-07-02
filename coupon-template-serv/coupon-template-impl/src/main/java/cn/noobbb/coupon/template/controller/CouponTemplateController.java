@@ -18,7 +18,6 @@ import java.util.Map;
 @RequestMapping("/template")
 public class CouponTemplateController {
 
-
     @Autowired
     private Gson gson;
 

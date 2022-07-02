@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 public enum CouponType {
 
     /**
-     * UNKNOWN ：防御性编程，用来应对错误的code
+     * UNKNOWN tips: 防御性编程，用来应对错误的code
      */
     UNKNOWN("unknown", "0"),
     MONEY_OFF("满减券", "1"),

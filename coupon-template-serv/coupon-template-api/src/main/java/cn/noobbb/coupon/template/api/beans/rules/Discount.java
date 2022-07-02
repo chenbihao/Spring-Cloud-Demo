@@ -22,7 +22,7 @@ public class Discount {
 
 
     /**
-     * 订单最低要达到多少钱才能用优惠券，单位为分
+     * 订单最低要达到多少钱才能用优惠券，单位为分     tips:以分为单位，免去 BigDecimal 转换的麻烦
      */
     private Long threshold;
 }

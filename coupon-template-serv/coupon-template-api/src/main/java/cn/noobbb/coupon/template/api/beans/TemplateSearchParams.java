@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 创建优惠券模板
+ * 搜索优惠券模板 VO
  */
 @Data
 @NoArgsConstructor

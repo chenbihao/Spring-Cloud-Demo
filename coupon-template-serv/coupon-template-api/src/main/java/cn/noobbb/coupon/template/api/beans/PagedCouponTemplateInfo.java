@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
- * 创建优惠券模板
+ * 优惠券模板-分页 VO
  */
 @Data
 @NoArgsConstructor
