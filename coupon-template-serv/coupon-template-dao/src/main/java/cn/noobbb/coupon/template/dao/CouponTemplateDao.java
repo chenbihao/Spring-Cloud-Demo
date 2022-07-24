@@ -16,7 +16,9 @@ import java.util.List;
 public interface CouponTemplateDao extends JpaRepository<CouponTemplate, Long> {
 
     /**
-     * 根据Shop ID查询出所有券模板                JPA 约定大于配置：<起手式>By<查询字段><连接词>
+     * 根据Shop ID查询出所有券模板
+     *
+     * JPA 约定大于配置：<起手式>By<查询字段><连接词>
      *
      * @param shopId shopId
      * @return
@@ -42,7 +44,9 @@ public interface CouponTemplateDao extends JpaRepository<CouponTemplate, Long> {
     Integer countByShopIdAndAvailable(Long shopId, Boolean available);
 
     /**
-     * 将优惠券设置为不可用                JPA 自定义SQL： @Query
+     * 将优惠券设置为不可用
+     *
+     * JPA 自定义SQL： @Query
      *
      * @param id
      * @return

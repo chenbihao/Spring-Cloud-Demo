@@ -14,7 +14,7 @@ public class Product {
      */
     private long price;
     /**
-     * 商品在购物车里的数量
+     * 商品在购物车里的数量（非标品计件单位要允许小数存在，这里简化）
      */
     private Integer count;
     /**
