@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <!-- 定义为父级依赖，可将版本向下传递 -->
@@ -19,46 +20,65 @@
     <name>coupon-center</name>
     <description>coupon-center</description>
 
+    <modules>
+
+        <module>coupon-template-serv</module>
+        <!--		<module>coupon-calculation-serv</module>-->
+        <!--		<module>coupon-customer-serv</module>-->
+        <!--		<module>middleware</module>-->
+        <!--		<module>coupon-customer-serv/coupon-customer-api</module>-->
+        <!--		<module>coupon-customer-serv/coupon-customer-dao</module>-->
+        <!--		<module>coupon-customer-serv/coupon-customer-impl</module>-->
+    </modules>
+
+    <!-- 定义为父级依赖，可将版本向下传递 -->
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>2023.0.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--        <dependency>-->
+            <!--            <groupId>com.alibaba.cloud</groupId>-->
+            <!--            <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
+            <!--            <version>2023.0.1</version>-->
+            <!--            <type>pom</type>-->
+            <!--            <scope>import</scope>-->
+            <!--        </dependency>-->
+
+
+            <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.10.1</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>33.1.0-jre</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>4.4</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
     <properties>
         <java.version>21</java.version>
     </properties>
 
-    <modules>
-
-        <module>coupon-template-serv</module>
-
-    </modules>
-
-    <!--	<modules>-->
-    <!--		<module>coupon-template-serv</module>-->
-    <!--		<module>coupon-calculation-serv</module>-->
-    <!--		<module>coupon-customer-serv</module>-->
-    <!--		<module>middleware</module>-->
-    <!--		<module>coupon-customer-serv/coupon-customer-api</module>-->
-    <!--		<module>coupon-customer-serv/coupon-customer-dao</module>-->
-    <!--		<module>coupon-customer-serv/coupon-customer-impl</module>-->
-    <!--	</modules>-->
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

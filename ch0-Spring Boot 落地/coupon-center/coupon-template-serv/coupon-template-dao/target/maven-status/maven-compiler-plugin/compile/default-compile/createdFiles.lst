@@ -1,0 +1,5 @@
+cn\noobbb\coupon\template\dao\converter\RuleConverter.class
+cn\noobbb\coupon\template\dao\CouponTemplateDao.class
+cn\noobbb\coupon\template\dao\entity\CouponTemplate.class
+cn\noobbb\coupon\template\dao\converter\CouponTypeConverter.class
+cn\noobbb\coupon\template\dao\entity\CouponTemplate$CouponTemplateBuilder.class

@@ -15,8 +15,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <!-- 存放公共类的仓库，给外部依赖提供一个干净的接口包-->
-        <module>coupon-template-api</module>
+        <module>coupon-template-api</module> <!-- 存放公共类的仓库，给外部依赖提供一个干净的接口包-->
         <module>coupon-template-dao</module>
         <module>coupon-template-impl</module>
     </modules>
