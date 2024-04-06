@@ -19,7 +19,6 @@
 -   高可用性
 -   高可扩展性
 
-
 ### 学习姿势
 
 -   多动手
@@ -44,6 +43,8 @@
 
 ### 课程用到的全家桶组件
 
+
+
 ![image-20220517225645257](README.assets/image-20220517225645257.png)
 
 tips：尽量避免使用已经进入“维护状态”的组件
@@ -61,6 +62,54 @@ tips：尽量避免使用已经进入“维护状态”的组件
 从 SpringBoot 进化成 Spring Cloud 项目：
 
 ![image-20220517235121926](README.assets/image-20220517235121926.png)
+
+
+
+## 各章节笔记
+
+
+
+[ch0-Spring Boot 落地](ch0-Spring Boot 落地/README.md)
+
+[ch1-Spring Cloud 基础](ch1-Spring Cloud 基础/README.md)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
