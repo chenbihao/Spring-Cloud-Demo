@@ -1,20 +1,20 @@
 
-# é¡¹ç›®çš„å¯åŠ¨ç«¯å£
+# ÏîÄ¿µÄÆô¶¯¶Ë¿Ú
 server:
   port: 20001
 spring:
   application:
-    # å®šä¹‰é¡¹ç›®åç§°
+    # ¶¨ÒåÏîÄ¿Ãû³Æ
     name: coupon-customer-serv
   datasource:
-    # mysqlæ•°æ®æº
+    # mysqlÊı¾İÔ´
     username: root
     password: 5233
     url: jdbc:mysql://192.168.31.215:3306/coupon_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
-    # æŒ‡å®šæ•°æ®æºDataSourceç±»å‹
+    # Ö¸¶¨Êı¾İÔ´DataSourceÀàĞÍ
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    # æ•°æ®åº“è¿æ¥æ± å‚æ•°é…ç½®ï¼Œæ¯”å¦‚æ± å­å¤§å°ã€è¶…æ—¶æ—¶é—´ã€æ˜¯å¦è‡ªåŠ¨æäº¤ç­‰ç­‰
+    # Êı¾İ¿âÁ¬½Ó³Ø²ÎÊıÅäÖÃ£¬±ÈÈç³Ø×Ó´óĞ¡¡¢³¬Ê±Ê±¼ä¡¢ÊÇ·ñ×Ô¶¯Ìá½»µÈµÈ
     hikari:
       pool-name: CouponHikari
       connection-timeout: 5000
@@ -26,9 +26,9 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      # åœ¨ç”Ÿäº§ç¯å¢ƒå…¨éƒ¨ä¸ºnoneï¼Œé˜²æ­¢ddlç»“æ„è¢«è‡ªåŠ¨æ‰§è¡Œï¼Œç ´åç”Ÿäº§æ•°æ®
+      # ÔÚÉú²ú»·¾³È«²¿Îªnone£¬·ÀÖ¹ddl½á¹¹±»×Ô¶¯Ö´ĞĞ£¬ÆÆ»µÉú²úÊı¾İ
       ddl-auto: none
-    # åœ¨æ—¥å¿—ä¸­æ‰“å°ç»è¿‡æ ¼å¼åŒ–çš„SQLè¯­å¥
+    # ÔÚÈÕÖ¾ÖĞ´òÓ¡¾­¹ı¸ñÊ½»¯µÄSQLÓï¾ä
     properties:
       hibernate.format_sql: true
       hibernate.show_sql: true

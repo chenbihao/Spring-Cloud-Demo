@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import jakarta.validation.constraints.NotNull;
 
+
 /**
  * 优惠券模板 VO
  */

@@ -21,9 +21,6 @@
         <module>coupon-calculation-serv</module>
         <module>coupon-customer-serv</module>
         <module>middleware</module>
-        <module>coupon-customer-serv/coupon-customer-api</module>
-        <module>coupon-customer-serv/coupon-customer-dao</module>
-        <module>coupon-customer-serv/coupon-customer-impl</module>
     </modules>
 
     <properties>

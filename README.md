@@ -2,8 +2,6 @@
 
 来自极客时间的 [Spring Cloud 微服务项目实战](https://gitee.com/banxian-yao/geekbang-coupon-center) 的练手DEMO
 
-
-
 ## 开篇
 
 ### 如何学习
@@ -45,7 +43,7 @@
 
 
 
-![image-20220517225645257](README.assets/image-20220517225645257.png)
+![全家桶组件](README.assets/全家桶组件.jpg)
 
 tips：尽量避免使用已经进入“维护状态”的组件
 
@@ -66,8 +64,6 @@ tips：尽量避免使用已经进入“维护状态”的组件
 
 
 ## 各章节笔记
-
-
 
 [ch0-Spring Boot 落地](ch0-Spring Boot 落地/README.md)
 

@@ -3,16 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>cn.noobbb</groupId>
         <artifactId>coupon-center</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>coupon-template-serv</artifactId>
     <packaging>pom</packaging>
+
+    <name>coupon-template-serv</name>
+    <description>模板服务</description>
 
     <modules>
         <module>coupon-template-api</module> <!-- 存放公共类的仓库，给外部依赖提供一个干净的接口包-->

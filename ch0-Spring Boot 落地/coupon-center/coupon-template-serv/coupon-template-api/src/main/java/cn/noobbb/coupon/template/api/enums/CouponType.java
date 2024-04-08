@@ -30,9 +30,9 @@ public enum CouponType {
      */
     private final String code;
 
-    public static CouponType convert(String code) {
+    public static CouponType convert(String s) {
         return Stream.of(values())
-                .filter(couponType -> couponType.code.equalsIgnoreCase(code))
+                .filter(couponType -> couponType.code.equalsIgnoreCase(s))
                 .findFirst()
                 .orElse(UNKNOWN);
     }

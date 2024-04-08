@@ -3,13 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <!-- 定义为父级依赖，可将版本向下传递 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.4</version>
-        <!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     </parent>
 
     <groupId>cn.noobbb</groupId>
@@ -18,17 +15,12 @@
     <packaging>pom</packaging> <!-- 表示不包含具体实现，只充当整合 -->
 
     <name>coupon-center</name>
-    <description>coupon-center</description>
+    <description>优惠券中心</description>
 
     <modules>
-
         <module>coupon-template-serv</module>
-        <!--		<module>coupon-calculation-serv</module>-->
-        <!--		<module>coupon-customer-serv</module>-->
-        <!--		<module>middleware</module>-->
-        <!--		<module>coupon-customer-serv/coupon-customer-api</module>-->
-        <!--		<module>coupon-customer-serv/coupon-customer-dao</module>-->
-        <!--		<module>coupon-customer-serv/coupon-customer-impl</module>-->
+        <module>coupon-calculation-serv</module>
+        <module>coupon-customer-serv</module>
     </modules>
 
     <!-- 定义为父级依赖，可将版本向下传递 -->
@@ -43,15 +35,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
-            <!--        <dependency>-->
-            <!--            <groupId>com.alibaba.cloud</groupId>-->
-            <!--            <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
-            <!--            <version>2023.0.1</version>-->
-            <!--            <type>pom</type>-->
-            <!--            <scope>import</scope>-->
-            <!--        </dependency>-->
-
 
             <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
             <dependency>
@@ -74,11 +57,18 @@
                 <version>4.4</version>
             </dependency>
 
+            <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.33</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
+
     <properties>
         <java.version>21</java.version>
     </properties>
-
 
 </project>
