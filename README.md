@@ -37,11 +37,7 @@
     -   流量整形
     -   熔断降级
 
-
-
 ### 课程用到的全家桶组件
-
-
 
 ![全家桶组件](README.assets/全家桶组件.jpg)
 
@@ -60,52 +56,5 @@ tips：尽量避免使用已经进入“维护状态”的组件
 从 SpringBoot 进化成 Spring Cloud 项目：
 
 ![image-20220517235121926](README.assets/image-20220517235121926.png)
-
-
-
-## 各章节笔记
-
-[ch0-Spring Boot 落地](ch0-Spring Boot 落地/README.md)
-
-[ch1-Spring Cloud 基础](ch1-Spring Cloud 基础/README.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
