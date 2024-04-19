@@ -14,8 +14,7 @@ spring:
       discovery:
         # Nacos 的服务注册地址，可以配置多个，逗号分隔
         server-addr: 192.168.31.112:8848
-        # 服务注册到 Nacos 上的名称，一般不用配置
-        service: coupon-calculation-serv
+        # service: # 服务注册到 Nacos 上的名称，一般不用配置
         # nacos客户端向服务端发送心跳的时间间隔，时间单位其实是ms
         heart-beat-interval: 5000
         # 服务端没有接受到客户端心跳请求就将其设为不健康的时间间隔，默认为15s
