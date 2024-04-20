@@ -36,12 +36,6 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
     @Autowired
     private CouponDao couponDao;
 
-    // 改造成 WebClient 形式调用
-//    @Autowired
-//    private CouponTemplateService templateService;
-//    @Autowired
-//    private CouponCalculationService calculationService;
-
     @Autowired
     private WebClient.Builder webClientBuilder;
 
@@ -70,9 +64,6 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
         }
         order.setCouponInfos(couponInfos);
 
-        // 改造成 WebClient 形式调用
-        // return calculationService.simulateOrder(order);
-
         // 调用接口试算服务
         return webClientBuilder.build().post()
                 .uri("http://coupon-calculation-serv/calculator/simulate")
@@ -99,12 +90,6 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
         if (coupons.isEmpty()) {
             return Lists.newArrayList();
         }
-
-        // 改造成 WebClient 形式调用
-//        List<Long> templateIds = coupons.stream()
-//                .map(Coupon::getTemplateId)
-//                .toList();
-//         Map<Long, CouponTemplateInfo> templateMap = templateService.getTemplateInfoMap(templateIds);
 
         // 获取这些优惠券的模板ID
         String templateIds = coupons.stream()
@@ -133,9 +118,6 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
      */
     @Override
     public Coupon requestCoupon(RequestCoupon request) {
-
-        // 改造成 WebClient 形式调用
-        // CouponTemplateInfo templateInfo = templateService.loadTemplateInfo(request.getCouponTemplateId());
 
         // 只接受body部分用bodyToMono，也可以用toEntity来获取整个Entity
         CouponTemplateInfo templateInfo = webClientBuilder.build()
@@ -209,9 +191,6 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
             couponInfo.setTemplate(loadTemplateInfo(coupon.getTemplateId()));
             order.setCouponInfos(Lists.newArrayList(couponInfo));
         }
-
-        // 改造成 WebClient 形式调用
-        // ShoppingCart checkoutInfo = calculationService.calculateOrderPrice(order);
 
         // order 结算   post 请求用 bodyValue 拿 order 作为请求参数
         ShoppingCart checkoutInfo = webClientBuilder.build().post()
