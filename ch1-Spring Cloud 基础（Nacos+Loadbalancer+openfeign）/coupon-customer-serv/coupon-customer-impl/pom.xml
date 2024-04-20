@@ -19,12 +19,12 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>coupon-calculation-impl</artifactId>
+            <artifactId>coupon-calculation-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>coupon-template-impl</artifactId>
+            <artifactId>coupon-template-api</artifactId>
             <version>${project.version}</version>
         </dependency>
 
