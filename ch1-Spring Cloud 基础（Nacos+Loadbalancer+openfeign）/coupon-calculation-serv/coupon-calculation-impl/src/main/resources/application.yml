@@ -38,7 +38,7 @@ spring:
 
 logging:
   level:
-    com.broadview.coupon: debug
+    cn.noobbb.coupon: debug
 
 # 开启所有 management 端点
 management:

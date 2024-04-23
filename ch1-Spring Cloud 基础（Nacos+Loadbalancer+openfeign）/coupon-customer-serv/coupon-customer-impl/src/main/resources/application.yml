@@ -1,6 +1,9 @@
-# 项目的启动端口
 server:
   port: 20001
+  # 在返回给页面的结果里，把错误信息添加到message里
+  error:
+    include-message: always
+
 spring:
   application:
     # 定义项目名称
@@ -63,3 +66,11 @@ spring:
         # 向注册中心注册服务，默认为 true
         # 如果只消费服务，不作为服务提供方，倒是可以设置成 false，减少开销
         register-enabled: true
+        # 类似长连接监听服务端信息变化的功能
+        watch:
+          enabled: true
+        watch-delay: 30000
+
+logging:
+  level:
+    cn.noobbb.coupon: debug

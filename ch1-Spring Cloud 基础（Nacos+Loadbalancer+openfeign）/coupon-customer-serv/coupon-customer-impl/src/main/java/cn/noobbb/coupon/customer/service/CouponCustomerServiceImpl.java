@@ -29,6 +29,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static cn.noobbb.coupon.customer.constant.Constant.TRAFFIC_VERSION;
+
 @Slf4j
 @Service
 public class CouponCustomerServiceImpl implements CouponCustomerService {
@@ -120,9 +122,10 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
     public Coupon requestCoupon(RequestCoupon request) {
 
         // 只接受body部分用bodyToMono，也可以用toEntity来获取整个Entity
-        CouponTemplateInfo templateInfo = webClientBuilder.build()
-                .get()
+        CouponTemplateInfo templateInfo = webClientBuilder.build().get()
                 .uri("http://coupon-template-serv/template/getTemplate?id=" + request.getCouponTemplateId())
+                // 将流量标记传入WebClient请求的Header中
+                .header(TRAFFIC_VERSION, request.getTrafficVersion())
                 .retrieve()
                 .bodyToMono(CouponTemplateInfo.class)
                 .block();
