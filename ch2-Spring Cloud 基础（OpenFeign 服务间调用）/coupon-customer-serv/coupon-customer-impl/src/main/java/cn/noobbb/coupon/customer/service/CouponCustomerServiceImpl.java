@@ -106,8 +106,6 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
     @Override
     public Coupon requestCoupon(RequestCoupon request) {
 
-        // 这里少了将流量标记传入WebClient请求的Header中的过程  .header(TRAFFIC_VERSION, request.getTrafficVersion())
-        // todo 这里也可以调用抽取了的方法
         CouponTemplateInfo templateInfo = templateService.getTemplate(request.getCouponTemplateId());
 
         // 模板不存在则报错
