@@ -73,4 +73,6 @@ spring:
 
 logging:
   level:
-    cn.noobbb.coupon: debug
+#    cn.noobbb.coupon: debug
+    cn.noobbb.coupon.customer.feign.TemplateService: debug
+    cn.noobbb.coupon.customer.feign.CalculationService: debug

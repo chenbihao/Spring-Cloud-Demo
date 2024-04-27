@@ -18,8 +18,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = {"cn.noobbb"})
 @EnableJpaRepositories(basePackages = {"cn.noobbb"}) //用于扫描Dao @Repository
 @EntityScan(basePackages = {"cn.noobbb"}) //用于扫描JPA实体类 @Entity，默认扫本包当下路径
-@LoadBalancerClient(value = "coupon-template-serv", configuration = CanaryRuleConfiguration.class)
 @EnableFeignClients(basePackages = {"cn.noobbb"})
+@LoadBalancerClient(value = "coupon-template-serv", configuration = CanaryRuleConfiguration.class)
 public class CustomerApplication {
 
     // 如果 Application 在 cn.noobbb.customer 下，
