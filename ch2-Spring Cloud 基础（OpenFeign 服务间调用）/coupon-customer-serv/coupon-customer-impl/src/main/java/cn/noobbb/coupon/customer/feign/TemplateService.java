@@ -1,5 +1,7 @@
 package cn.noobbb.coupon.customer.feign;
 
+import cn.noobbb.coupon.customer.feign.fallback.TemplateServiceFallback;
+import cn.noobbb.coupon.customer.feign.fallback.TemplateServiceFallbackFactory;
 import cn.noobbb.coupon.template.api.beans.CouponTemplateInfo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +12,7 @@ import java.util.Map;
 
 @FeignClient(value = "coupon-template-serv", path = "/template"
 //        ,fallback = TemplateServiceFallback.class
-//        ,fallbackFactory = TemplateServiceFallbackFactory.class
+        ,fallbackFactory = TemplateServiceFallbackFactory.class
 )
 public interface TemplateService {
 

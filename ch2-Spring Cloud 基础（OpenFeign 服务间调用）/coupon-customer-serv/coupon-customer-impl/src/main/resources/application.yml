@@ -79,9 +79,14 @@ spring:
           coupon-template-serv:
             readTimeout: 1500
             connectTimeout: 1000
+      circuitbreaker:
+        enabled: true
+
+
 
 logging:
   level:
 #    cn.noobbb.coupon: debug
     cn.noobbb.coupon.customer.feign.TemplateService: debug
     cn.noobbb.coupon.customer.feign.CalculationService: debug
+
