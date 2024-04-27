@@ -70,6 +70,15 @@ spring:
         watch:
           enabled: true
         watch-delay: 30000
+    openfeign:
+      client:
+        config:
+          default:
+            readTimeout: 2000 # 服务请求响应阶段
+            connectTimeout: 1000 # 网络连接阶段
+          coupon-template-serv:
+            readTimeout: 1500
+            connectTimeout: 1000
 
 logging:
   level:
