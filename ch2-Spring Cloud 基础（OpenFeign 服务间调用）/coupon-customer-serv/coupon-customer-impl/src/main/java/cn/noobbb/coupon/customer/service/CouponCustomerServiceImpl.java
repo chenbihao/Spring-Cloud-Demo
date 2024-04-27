@@ -20,18 +20,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
-
-import static cn.noobbb.coupon.customer.constant.Constant.TRAFFIC_VERSION;
 
 @Slf4j
 @Service
@@ -39,9 +34,6 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
 
     @Autowired
     private CouponDao couponDao;
-
-//    @Autowired
-//    private WebClient.Builder webClientBuilder;
 
     @Autowired
     private TemplateService templateService;
@@ -67,19 +59,11 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
             if (couponOptional.isPresent()) {
                 Coupon coupon = couponOptional.get();
                 CouponInfo couponInfo = CouponConverter.convertToCoupon(coupon);
-                couponInfo.setTemplate(loadTemplateInfo(coupon.getTemplateId()));
+                couponInfo.setTemplate(templateService.getTemplate(coupon.getTemplateId()));
                 couponInfos.add(couponInfo);
             }
         }
         order.setCouponInfos(couponInfos);
-
-        // 调用接口试算服务
-//        return webClientBuilder.build().post()
-//                .uri("http://coupon-calculation-serv/calculator/simulate")
-//                .bodyValue(order)
-//                .retrieve()
-//                .bodyToMono(SimulationResponse.class)
-//                .block();
 
         // 调用接口试算服务
         return calculationService.simulate(order);
@@ -104,21 +88,6 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
         }
 
         // 获取这些优惠券的模板ID
-//        String templateIds = coupons.stream()
-//                .map(Coupon::getTemplateId)
-//                .map(String::valueOf)
-//                .distinct()
-//                .collect(Collectors.joining(","));
-//
-//        // ParameterizedTypeReference 用来指定转换类型
-//        Map<Long, CouponTemplateInfo> templateMap = webClientBuilder.build().get()
-//                .uri("http://coupon-template-serv/template/getBatch?ids=" + templateIds)
-//                .retrieve()
-//                .bodyToMono(new ParameterizedTypeReference<Map<Long, CouponTemplateInfo>>() {
-//                })
-//                .block();
-
-        // 获取这些优惠券的模板ID
         List<Long> templateIds = coupons.stream()
                 .map(Coupon::getTemplateId)
                 .toList();
@@ -137,16 +106,7 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
     @Override
     public Coupon requestCoupon(RequestCoupon request) {
 
-        // 只接受body部分用bodyToMono，也可以用toEntity来获取整个Entity
-//        CouponTemplateInfo templateInfo = webClientBuilder.build().get()
-//                .uri("http://coupon-template-serv/template/getTemplate?id=" + request.getCouponTemplateId())
-//                // 将流量标记传入WebClient请求的Header中
-//                .header(TRAFFIC_VERSION, request.getTrafficVersion())
-//                .retrieve()
-//                .bodyToMono(CouponTemplateInfo.class)
-//                .block();
-
-        // 这里少了将流量标记传入WebClient请求的Header中的过程
+        // 这里少了将流量标记传入WebClient请求的Header中的过程  .header(TRAFFIC_VERSION, request.getTrafficVersion())
         // todo 这里也可以调用抽取了的方法
         CouponTemplateInfo templateInfo = templateService.getTemplate(request.getCouponTemplateId());
 
@@ -210,18 +170,11 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
                     .orElseThrow(() -> new RuntimeException("Coupon not found"));
 
             CouponInfo couponInfo = CouponConverter.convertToCoupon(coupon);
-            couponInfo.setTemplate(loadTemplateInfo(coupon.getTemplateId()));
+            couponInfo.setTemplate(templateService.getTemplate(coupon.getTemplateId()));
             order.setCouponInfos(Lists.newArrayList(couponInfo));
         }
 
-        // order 结算   post 请求用 bodyValue 拿 order 作为请求参数
-//        ShoppingCart checkoutInfo = webClientBuilder.build().post()
-//                .uri("http://coupon-calculation-serv/calculator/checkout")
-//                .bodyValue(order)
-//                .retrieve()
-//                .bodyToMono(ShoppingCart.class)
-//                .block();
-
+        // order 结算
         ShoppingCart checkoutInfo = calculationService.checkout(order);
 
         if (coupon != null) {
@@ -235,18 +188,6 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
             couponDao.save(coupon);
         }
         return checkoutInfo;
-    }
-
-    /**
-     * 获取模板信息
-     */
-    private CouponTemplateInfo loadTemplateInfo(Long templateId) {
-//        return webClientBuilder.build().get()
-//                .uri("http://coupon-template-serv/template/getTemplate?id=" + templateId)
-//                .retrieve()
-//                .bodyToMono(CouponTemplateInfo.class)
-//                .block();
-        return templateService.getTemplate(templateId);
     }
 
     /**
