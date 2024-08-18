@@ -5,26 +5,26 @@ server:
     include-message: always
 
 spring:
-  application:
-    # 定义项目名称
-    name: coupon-customer-serv
-  datasource:
-    # mysql数据源
-    username: coupon
-    password: coupon112
-    url: jdbc:mysql://192.168.31.112:3306/coupon_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
-    # 指定数据源 DataSource 类型
-    type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    # 数据库连接池参数配置，比如池子大小、超时时间、是否自动提交等等
-    hikari:
-      pool-name: CouponHikari
-      connection-timeout: 5000
-      idle-timeout: 30000
-      maximum-pool-size: 10
-      minimum-idle: 5
-      max-lifetime: 60000
-      auto-commit: true
+#  application:
+#    # 定义项目名称
+#    name: coupon-customer-serv
+#  datasource:
+#    # mysql数据源
+#    username: coupon
+#    password: coupon112
+#    url: jdbc:mysql://192.168.31.112:3306/coupon_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
+#    # 指定数据源 DataSource 类型
+#    type: com.zaxxer.hikari.HikariDataSource
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    # 数据库连接池参数配置，比如池子大小、超时时间、是否自动提交等等
+#    hikari:
+#      pool-name: CouponHikari
+#      connection-timeout: 5000
+#      idle-timeout: 30000
+#      maximum-pool-size: 10
+#      minimum-idle: 5
+#      max-lifetime: 60000
+#      auto-commit: true
   jpa:
     show-sql: true
     hibernate:
