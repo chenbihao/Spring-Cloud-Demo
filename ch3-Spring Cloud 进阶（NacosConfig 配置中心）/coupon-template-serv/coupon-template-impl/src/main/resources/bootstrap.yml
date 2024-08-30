@@ -1,7 +1,7 @@
 spring:
   # 必须把 name 属性从 application.yml 迁移过来，否则无法动态刷新
   application:
-    name: coupon-customer-serv
+    name: coupon-template-serv
   cloud:
     nacos:
       # nacos 服务器的地址
@@ -27,12 +27,12 @@ spring:
         refresh-enabled: true
         # Nacos 的共享配置项，数字越大优先级越高
         shared-configs:
-          - dataId: redis-config.yml
-            group: EXT_GROUP
-            refresh: true
-          - dataId: rabbitmq-config.yml
-            group: EXT_GROUP
-            refresh: true
+#          - dataId: redis-config.yml
+#            group: EXT_GROUP
+#            refresh: true
+#          - dataId: rabbitmq-config.yml
+#            group: EXT_GROUP
+#            refresh: true
         # Nacos 的扩展配置项，优先级大于 shared-configs
         extension-configs:
 
