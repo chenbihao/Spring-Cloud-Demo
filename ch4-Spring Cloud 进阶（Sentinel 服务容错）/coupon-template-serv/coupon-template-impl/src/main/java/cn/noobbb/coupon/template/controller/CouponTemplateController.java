@@ -4,12 +4,16 @@ import cn.noobbb.coupon.template.api.beans.CouponTemplateInfo;
 import cn.noobbb.coupon.template.api.beans.PagedCouponTemplateInfo;
 import cn.noobbb.coupon.template.api.beans.TemplateSearchParams;
 import cn.noobbb.coupon.template.service.intf.CouponTemplateService;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
+
 import java.util.Collection;
 import java.util.Map;
 
@@ -46,6 +50,7 @@ public class CouponTemplateController {
      * 读取优惠券
      */
     @GetMapping("/getTemplate")
+    @SentinelResource(value = "getTemplate")
     public CouponTemplateInfo getTemplate(@RequestParam("id") Long id) {
         log.info("Load template, id={}", id);
         return couponTemplateService.loadTemplateInfo(id);
@@ -55,9 +60,15 @@ public class CouponTemplateController {
      * 批量获取
      */
     @GetMapping("/getBatch")
+    @SentinelResource(value = "getTemplateInBatch", blockHandler = "getTemplateInBatch_block")
     public Map<Long, CouponTemplateInfo> getTemplateInBatch(@RequestParam("ids") Collection<Long> ids) {
         log.info("getTemplateInBatch: {}", gson.toJson(ids));
         return couponTemplateService.getTemplateInfoMap(ids);
+    }
+
+    public Map<Long, CouponTemplateInfo> getTemplateInBatch_block(Collection<Long> ids, BlockException exception) {
+        log.info("接口被限流");
+        throw new IllegalArgumentException("接口被限流");
     }
 
     /**
