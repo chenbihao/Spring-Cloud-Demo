@@ -60,15 +60,34 @@ public class CouponTemplateController {
      * 批量获取
      */
     @GetMapping("/getBatch")
-    @SentinelResource(value = "getTemplateInBatch", blockHandler = "getTemplateInBatch_block")
+    @SentinelResource(value = "getTemplateInBatch",
+            fallback = "getTemplateInBatch_fallback",
+            blockHandler = "getTemplateInBatch_block")
     public Map<Long, CouponTemplateInfo> getTemplateInBatch(@RequestParam("ids") Collection<Long> ids) {
+        // 如果接口被熔断，那么下面这行log不会被打印出来
         log.info("getTemplateInBatch: {}", gson.toJson(ids));
+
+//        // 可以测试异常比例、异常数熔断
+//        if (ids.size() == 3) {
+//            throw new RuntimeException("异常");
+//        }
+        // 可以测试慢调用熔断
+//        try {
+//            Thread.sleep(500 * ids.size());
+//        } catch (Exception e) {
+//        }
+
         return couponTemplateService.getTemplateInfoMap(ids);
     }
 
     public Map<Long, CouponTemplateInfo> getTemplateInBatch_block(Collection<Long> ids, BlockException exception) {
         log.info("接口被限流");
         throw new IllegalArgumentException("接口被限流");
+    }
+
+    public Map<Long, CouponTemplateInfo> getTemplateInBatch_fallback(Collection<Long> ids) {
+        log.info("接口被降级");
+        throw new IllegalArgumentException("接口被降级");
     }
 
     /**
