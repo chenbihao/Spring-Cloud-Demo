@@ -16,3 +16,15 @@ spring:
         port: 8719
         # dashboard地址
         dashboard: localhost:8718
+
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0      # 采样率，默认 0.1
+  # 直连 zipkin 的方式：
+  zipkin:
+    tracing:
+      endpoint: http://192.168.31.112:9411/api/v2/spans
+
+
