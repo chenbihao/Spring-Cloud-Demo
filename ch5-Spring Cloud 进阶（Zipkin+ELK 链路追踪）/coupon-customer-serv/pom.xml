@@ -87,24 +87,18 @@
             <artifactId>feign-micrometer</artifactId>
         </dependency>
 
-        <!-- Sender 依赖，这里选择 rabbitMQ !这个是用在异步的，而不是spring的自动配置 -->
-        <!--        <dependency>-->
-        <!--            <groupId>io.zipkin.reporter2</groupId>-->
-        <!--            <artifactId>zipkin-sender-amqp-client</artifactId>-->
-        <!--        </dependency>-->
+        <!-- Logstash对接 -->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>8.0</version>
+        </dependency>
 
 
         <!-- 提前剧透Stream -->
         <!--        <dependency>-->
         <!--            <groupId>org.springframework.cloud</groupId>-->
         <!--            <artifactId>spring-cloud-stream-binder-rabbit</artifactId>-->
-        <!--        </dependency>-->
-
-        <!-- Logstash对接 -->
-        <!--        <dependency>-->
-        <!--            <groupId>net.logstash.logback</groupId>-->
-        <!--            <artifactId>logstash-logback-encoder</artifactId>-->
-        <!--            <version>7.0.1</version>-->
         <!--        </dependency>-->
 
 
