@@ -1,0 +1,18 @@
+server:
+  port: 20000
+  # 在返回给页面的结果里，把错误信息添加到message里
+  error:
+    include-message: always
+
+logging:
+  level:
+    cn.noobbb.coupon: debug
+
+spring:
+  cloud:
+    sentinel:
+      transport:
+        # sentinel api端口，默认8719
+        port: 8719
+        # dashboard地址
+        dashboard: localhost:8718

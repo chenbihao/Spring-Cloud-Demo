@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <!-- 控制台 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <!-- 日志输出编码 -->
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <!--    <appender name="fileAppender" class="ch.qos.logback.core.FileAppender">-->
+    <!--        <file>/tmp/skywalking-logs/logback/e2e-service-provider.log</file>-->
+    <!--        <encoder>-->
+    <!--            <pattern>${CONSOLE_LOG_PATTERN}</pattern>-->
+    <!--            <charset>utf8</charset>-->
+    <!--        </encoder>-->
+    <!--    </appender>-->
+
+    <!-- 输出日志信息到 skywalking -->
+    <appender name="skywalking-grpc-log" class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.log.GRPCLogClientAppender">
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.mdc.TraceIdMDCPatternLogbackLayout">
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{tid}] [%thread] %-5level %logger{36} -%msg%n</Pattern>
+            </layout>
+        </encoder>
+    </appender>
+
+    <!-- 日志输出级别调整为INFO -->
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="skywalking-grpc-log"/>
+    </root>
+    <logger name="fileLogger" level="INFO">
+        <appender-ref ref="fileAppender"/>
+    </logger>
+</configuration>
