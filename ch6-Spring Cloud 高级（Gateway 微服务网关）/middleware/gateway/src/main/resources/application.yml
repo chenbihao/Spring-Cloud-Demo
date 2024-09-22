@@ -1,0 +1,59 @@
+server:
+  port: 20099
+
+spring:
+  data:
+    redis:
+      host: 192.168.31.112
+      port: 6379
+      password: redis112
+  cloud:
+    # gateway 相关配置
+    gateway:
+      discovery:
+        locator:
+          # 创建默认路由，以"/服务名称/接口地址"的格式规则进行转发
+          # Nacos服务名称本来就是小写，但Eureka默认大写
+          enabled: true
+          lower-case-service-id: true
+      # 跨域配置
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            # 授信地址列表
+            allowed-origins:
+              - "http://localhost:10000"
+              - "http://www.noobbb.cn"
+            # cookie, authorization认证信息
+            exposed-headers: "*"
+            allowed-methods: "*"
+            allow-credentials: true
+            allowed-headers: "*"
+            # 浏览器缓存时间
+            max-age: 1000
+
+#    sentinel:
+#      datasource:
+#        # 数据源的key，可以自由命名
+#        noobbb-flow:
+#          # 指定当前数据源是nacos
+#          nacos:
+#            # 设置Nacos的连接地址
+#            server-addr: 192.168.31.112:8848
+#            username: nacos
+#            password: nacos112
+#            # 命名空间 和 Group ID
+#            namespace: dev
+#            groupId: SENTINEL_GROUP
+#            # 设置Nacos中配置文件的命名规则
+#            dataId: ${spring.application.name}-flow-rules
+#            # 必填的重要字段，指定当前规则类型是"限流"
+#            rule-type: flow
+#      transport:
+#        # sentinel api端口，默认8719
+#        port: 8719
+#        # dashboard地址
+#        dashboard: localhost:8718
+
+
+

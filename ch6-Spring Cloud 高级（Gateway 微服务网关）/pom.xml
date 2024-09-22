@@ -21,6 +21,7 @@
         <module>coupon-template-serv</module>
         <module>coupon-calculation-serv</module>
         <module>coupon-customer-serv</module>
+        <module>middleware</module>
     </modules>
 
     <!-- 定义为父级依赖，可将版本向下传递 -->
