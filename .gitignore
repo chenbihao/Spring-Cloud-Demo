@@ -27,3 +27,5 @@ target
 *.zip
 *.tar.gz
 *.rar
+
+!/ch4-Spring Cloud 进阶（Sentinel 服务容错）/middleware/**
