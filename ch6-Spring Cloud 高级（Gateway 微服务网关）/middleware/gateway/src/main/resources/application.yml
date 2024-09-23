@@ -1,36 +1,9 @@
 server:
   port: 20099
+  error:
+    include-message: always
 
-spring:
-  data:
-    redis:
-      host: 192.168.31.112
-      port: 6379
-      password: redis112
-  cloud:
-    # gateway 相关配置
-    gateway:
-      discovery:
-        locator:
-          # 创建默认路由，以"/服务名称/接口地址"的格式规则进行转发
-          # Nacos服务名称本来就是小写，但Eureka默认大写
-          enabled: true
-          lower-case-service-id: true
-      # 跨域配置
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            # 授信地址列表
-            allowed-origins:
-              - "http://localhost:10000"
-              - "http://www.noobbb.cn"
-            # cookie, authorization认证信息
-            exposed-headers: "*"
-            allowed-methods: "*"
-            allow-credentials: true
-            allowed-headers: "*"
-            # 浏览器缓存时间
-            max-age: 1000
+# spring.* 配置已上传 nacos config
 
 #    sentinel:
 #      datasource:
@@ -55,5 +28,17 @@ spring:
 #        # dashboard地址
 #        dashboard: localhost:8718
 
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    cn.noobbb.coupon: debug
 
 

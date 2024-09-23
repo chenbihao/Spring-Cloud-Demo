@@ -1,0 +1,18 @@
+[{
+    "id": "customer-dynamic-router",
+    "order": 0,
+    "predicates": [{
+        "args": {
+            "pattern": "/dynamic-routes2/**"
+        },
+        "name": "Path"
+    }],
+    "filters": [{
+        "name": "StripPrefix",
+        "args": {
+            "parts": 1
+        }
+    }
+    ],
+    "uri": "lb://coupon-customer-serv"
+}]

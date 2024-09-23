@@ -28,12 +28,12 @@ spring:
         refresh-enabled: true
         # Nacos 的共享配置项，数字越大优先级越高
         shared-configs:
-#          - dataId: redis-config.yml
-#            group: EXT_GROUP
-#            refresh: true
-#          - dataId: rabbitmq-config.yml
-#            group: EXT_GROUP
-#            refresh: true
+          - dataId: redis-config.yml
+            group: EXT_GROUP
+            refresh: true
+          - dataId: rabbitmq-config.yml
+            group: EXT_GROUP
+            refresh: true
         # Nacos 的扩展配置项，优先级大于 shared-configs
         extension-configs:
 
