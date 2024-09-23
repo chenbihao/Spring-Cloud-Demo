@@ -5,34 +5,14 @@ server:
 
 # spring.* 配置已上传 nacos config
 
-# 接入 sentinel
-#spring:
-#  cloud:
-#    sentinel:
-#      datasource:
-#        # 数据源的key，可以自由命名
-#        noobbb-flow:
-#          # 指定当前数据源是nacos
-#          nacos:
-#            # 设置Nacos的连接地址
-#            server-addr: 192.168.31.112:8848
-#            username: nacos
-#            password: nacos112
-#            # 命名空间 和 Group ID
-#            namespace: dev
-#            groupId: SENTINEL_GROUP
-#            # 设置Nacos中配置文件的命名规则
-#            dataId: ${spring.application.name}-flow-rules
-#            # 必填的重要字段，指定当前规则类型是"限流"
-#            rule-type: flow
-#      transport:
-#        # sentinel api端口，默认8719
-#        port: 8719
-#        # 如果非同一网络，需手动设置clientIp
-#        clientIp: 192.168.31.110
-#        # dashboard地址
-#        dashboard: 192.168.31.112:8718
+# 开启网关的日志打印
+logging:
+  level:
+    reactor:
+      netty: INFO
+    org.springframework.cloud.gateway: TRACE
 
+# 开放端点
 management:
   endpoint:
     gateway:
@@ -41,9 +21,3 @@ management:
     web:
       exposure:
         include: "*"
-
-logging:
-  level:
-    cn.noobbb.coupon: debug
-
-
