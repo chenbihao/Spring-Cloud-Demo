@@ -14,5 +14,6 @@ COPY --from=installer ["/home/sentinel-dashboard.jar", "/home/sentinel-dashboard
 RUN chmod +x /home/sentinel-dashboard.jar
 
 EXPOSE 8718
+EXPOSE 8719
 
 CMD java ${JAVA_OPTS} -jar /home/sentinel-dashboard.jar

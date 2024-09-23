@@ -34,6 +34,9 @@ spring:
           - dataId: rabbitmq-config.yml
             group: EXT_GROUP
             refresh: true
+          - dataId: sentinel-config.yml
+            group: EXT_GROUP
+            refresh: true
         # Nacos 的扩展配置项，优先级大于 shared-configs
         extension-configs:
 
