@@ -7,6 +7,7 @@ import cn.noobbb.coupon.calculation.api.beans.SimulationResponse;
 import cn.noobbb.coupon.customer.api.beans.RequestCoupon;
 import cn.noobbb.coupon.customer.api.beans.SearchCoupon;
 import cn.noobbb.coupon.customer.dao.entity.Coupon;
+import cn.noobbb.coupon.customer.event.CouponProducer;
 import cn.noobbb.coupon.customer.service.intf.CouponCustomerService;
 import cn.noobbb.coupon.template.api.beans.CouponInfo;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
@@ -28,6 +29,8 @@ public class CouponCustomerController {
 
     @Autowired
     private CouponCustomerService customerService;
+    @Autowired
+    private CouponProducer couponProducer;
 
     @Value("${disableCouponRequest:false}")
     private Boolean disableCoupon;
@@ -61,6 +64,26 @@ public class CouponCustomerController {
     public void deleteCoupon(@RequestParam("userId") Long userId, @RequestParam("couponId") Long couponId) {
         customerService.deleteCoupon(userId, couponId);
     }
+
+
+    /**
+     * 领券接口 Event
+     */
+    @PostMapping("requestCouponEvent")
+    public void requestCouponEvent(@Valid @RequestBody RequestCoupon request) {
+        couponProducer.sendCoupon(request);
+    }
+
+    /**
+     * 用户删除优惠券 Event
+     */
+    @DeleteMapping("deleteCouponEvent")
+    public void deleteCouponEvent(@RequestParam("userId") Long userId,
+                                  @RequestParam("couponId") Long couponId) {
+        couponProducer.deleteCoupon(userId, couponId);
+    }
+
+
 
     /**
      * 用户模拟计算每个优惠券的优惠价格

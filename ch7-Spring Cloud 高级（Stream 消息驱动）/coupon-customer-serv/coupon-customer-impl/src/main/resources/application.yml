@@ -8,4 +8,40 @@ logging:
   level:
     cn.noobbb.coupon: debug
 
-
+spring:
+  cloud:
+    stream:
+      # 如果你项目里只对接一个中间件，定义 spring.rabbitmq 就可以
+      # 当系统要定义多个消息中间件的时候，使用 binders 定义
+      binders:
+        my-rabbit:
+          type: rabbit # 消息中间件类型
+          environment: # 连接信息
+            spring:
+              rabbitmq:
+                host: 192.168.31.112
+                port: 5672
+                username: rabbit
+                password: rabbit112
+      bindings:
+        addCoupon-out-0:
+          destination: request-coupon-topic
+          content-type: application/json
+          binder: my-rabbit
+        addCoupon-in-0:
+          destination: request-coupon-topic
+          content-type: application/json
+          # 消费组，同一个组内只能被消费一次
+          group: add-coupon-group
+          binder: my-rabbit
+        deleteCoupon-out-0:
+          destination: delete-coupon-topic
+          content-type: text/plain
+          binder: my-rabbit
+        deleteCoupon-in-0:
+          destination: delete-coupon-topic
+          content-type: text/plain
+          group: delete-coupon-group
+          binder: my-rabbit
+    function:
+      definition: addCoupon;deleteCoupon
