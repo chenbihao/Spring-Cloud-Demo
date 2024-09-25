@@ -75,6 +75,14 @@ public class CouponCustomerController {
     }
 
     /**
+     * 领券接口 DelayEvent
+     */
+    @PostMapping("requestCouponDelayEvent")
+    public void requestCouponDelayedEvent(@Valid @RequestBody RequestCoupon request) {
+        couponProducer.sendCouponInDelay(request);
+    }
+
+    /**
      * 用户删除优惠券 Event
      */
     @DeleteMapping("deleteCouponEvent")
@@ -82,8 +90,6 @@ public class CouponCustomerController {
                                   @RequestParam("couponId") Long couponId) {
         couponProducer.deleteCoupon(userId, couponId);
     }
-
-
 
     /**
      * 用户模拟计算每个优惠券的优惠价格

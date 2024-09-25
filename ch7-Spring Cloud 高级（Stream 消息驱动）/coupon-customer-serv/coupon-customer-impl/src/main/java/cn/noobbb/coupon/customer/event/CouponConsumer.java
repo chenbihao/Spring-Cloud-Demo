@@ -55,8 +55,16 @@ public class CouponConsumer {
             // 实现自己的逻辑，例如告警通知
             // 告警完后可以考虑是丢弃信息，还是发送到某个队列里等错误处理完后再把消息重新投递回原来的队列里
 
-//            // 这里抛出异常转入死信队列
+//            // 这里抛出异常则转入死信队列
 //            throw new IllegalArgumentException("抛出异常转入死信队列");
+        };
+    }
+
+    @Bean
+    public Consumer<RequestCoupon> addCouponDelay() {
+        return request -> {
+            log.info("received: {}", request);
+            customerService.requestCoupon(request);
         };
     }
 

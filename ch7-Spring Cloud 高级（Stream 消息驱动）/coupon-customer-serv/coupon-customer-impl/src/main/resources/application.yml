@@ -47,7 +47,6 @@ spring:
             # 可重试异常（如果某个异常不想重试可以配置在这里）
 #            retryableExceptions:
 #              java.lang.IllegalArgumentException: false
-
         deleteCoupon-out-0:
           destination: delete-coupon-topic
           content-type: text/plain
@@ -57,6 +56,18 @@ spring:
           content-type: text/plain
           group: delete-coupon-group
           binder: my-rabbit
+
+        addCouponDelay-out-0:
+          destination: request-coupon-delayed-topic
+          content-type: application/json
+          binder: my-rabbit
+        addCouponDelay-in-0:
+          destination: request-coupon-delayed-topic
+          content-type: application/json
+          group: add-coupon-group
+          binder: my-rabbit
+          consumer:
+            maxAttempts: 1
 
       rabbit:
         bindings:
@@ -69,6 +80,12 @@ spring:
             consumer:
               auto-bind-dlq: true
 
+          addCouponDelay-out-0:
+            producer:
+              delayed-exchange: true
+          addCouponDelay-in-0:
+            consumer:
+              delayed-exchange: true
 
     function:
-      definition: addCoupon;deleteCoupon
+      definition: addCoupon;deleteCoupon;addCouponDelay
