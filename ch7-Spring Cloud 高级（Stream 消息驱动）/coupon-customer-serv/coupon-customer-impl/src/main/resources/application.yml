@@ -34,6 +34,20 @@ spring:
           # 消费组，同一个组内只能被消费一次
           group: add-coupon-group
           binder: my-rabbit
+          error-handler-definition: requestCouponErrorHandler
+          consumer:
+            # 默认值为 3（首次+2次重试，设置1则禁用重试）
+            maxAttempts: 1
+            # 重试初始间隔
+            backOffInitialInterval: 1000
+            # 重试最大间隔
+            backOffMaxInterval: 5000
+            # 重试乘数（初始间隔*乘数，直到到达最大间隔）
+            backOffMultiplier: 2
+            # 可重试异常（如果某个异常不想重试可以配置在这里）
+#            retryableExceptions:
+#              java.lang.IllegalArgumentException: false
+
         deleteCoupon-out-0:
           destination: delete-coupon-topic
           content-type: text/plain
@@ -43,5 +57,18 @@ spring:
           content-type: text/plain
           group: delete-coupon-group
           binder: my-rabbit
+
+      rabbit:
+        bindings:
+#          addCoupon-in-0:
+#            consumer:
+              #requeue重回队列 重试
+#              requeueRejected: true
+#              republishToDlq: false
+          deleteCoupon-in-0:
+            consumer:
+              auto-bind-dlq: true
+
+
     function:
       definition: addCoupon;deleteCoupon
