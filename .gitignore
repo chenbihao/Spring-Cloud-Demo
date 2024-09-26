@@ -29,3 +29,9 @@ target
 *.rar
 
 !/ch4-Spring Cloud 进阶（Sentinel 服务容错）/middleware/**
+!/ch8-Spring Cloud 高级（Seata 分布式事务-AT）/资源文件/**
+
+
+
+
+
