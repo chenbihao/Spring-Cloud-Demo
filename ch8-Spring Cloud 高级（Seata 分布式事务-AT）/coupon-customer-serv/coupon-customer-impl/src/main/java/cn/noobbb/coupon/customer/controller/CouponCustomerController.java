@@ -10,6 +10,7 @@ import cn.noobbb.coupon.customer.dao.entity.Coupon;
 import cn.noobbb.coupon.customer.service.intf.CouponCustomerService;
 import cn.noobbb.coupon.template.api.beans.CouponInfo;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -77,6 +78,19 @@ public class CouponCustomerController {
     public ShoppingCart checkout(@Valid @RequestBody ShoppingCart info) {
         return customerService.placeOrder(info);
     }
+
+
+    /**
+     * 删除券模板（Seata AT）
+     * @GlobalTransactional 是seata用来开启分布式事务的顶层注解
+     * 全局事务碰到任何 Exception 异常，都会触发全局事务回滚操作，这个行为是通过 GlobalTransactional 注解的 rollbackFor 方法指定的
+     */
+    @DeleteMapping("template")
+    @GlobalTransactional(name = "coupon-customer-serv", rollbackFor = Exception.class)
+    public void deleteCoupon(@RequestParam("templateId") Long templateId) {
+        customerService.deleteCouponTemplate(templateId);
+    }
+
 
 
 }

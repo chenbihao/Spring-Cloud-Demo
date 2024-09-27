@@ -3,6 +3,7 @@ package cn.noobbb.coupon.customer.feign;
 import cn.noobbb.coupon.customer.feign.fallback.TemplateServiceFallbackFactory;
 import cn.noobbb.coupon.template.api.beans.CouponTemplateInfo;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -11,7 +12,7 @@ import java.util.Map;
 
 @FeignClient(value = "coupon-template-serv", path = "/template"
 //        ,fallback = TemplateServiceFallback.class
-        ,fallbackFactory = TemplateServiceFallbackFactory.class
+//        , fallbackFactory = TemplateServiceFallbackFactory.class
 )
 public interface TemplateService {
 
@@ -22,5 +23,9 @@ public interface TemplateService {
     // 批量获取
     @GetMapping("/getBatch")
     Map<Long, CouponTemplateInfo> getTemplateInBatch(@RequestParam("ids") Collection<Long> ids);
+
+    // 优惠券无效化
+    @DeleteMapping("/deleteTemplate")
+    void deleteTemplate(@RequestParam("id") Long id);
 
 }

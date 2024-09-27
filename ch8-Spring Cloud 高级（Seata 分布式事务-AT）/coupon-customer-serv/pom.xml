@@ -63,12 +63,6 @@
             <artifactId>sentinel-datasource-nacos</artifactId>
         </dependency>
 
-        <!-- sentinel 接入 nacos config -->
-        <dependency>
-            <groupId>com.alibaba.csp</groupId>
-            <artifactId>sentinel-datasource-nacos</artifactId>
-        </dependency>
-
         <!-- 接入 skywalking 日志 -->
         <dependency>
             <groupId>org.apache.skywalking</groupId>
@@ -76,6 +70,11 @@
         </dependency>
 
 
+        <!-- 接入 Seata -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+        </dependency>
 
 
 

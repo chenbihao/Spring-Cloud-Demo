@@ -208,4 +208,17 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
         couponDao.save(coupon);
     }
 
+
+    /**
+     * 删除券模板
+     */
+    @Override
+    @Transactional
+    public void deleteCouponTemplate(Long templateId) {
+        templateService.deleteTemplate(templateId);
+        couponDao.deleteCouponInBatch(templateId, CouponStatus.INACTIVE);
+        // 模拟分布式异常（必须把异常抛出到全局事务的发起方，如果有异常处理拦截器记得不要吞异常）
+        throw new RuntimeException("AT分布式事务挂了");
+    }
+
 }

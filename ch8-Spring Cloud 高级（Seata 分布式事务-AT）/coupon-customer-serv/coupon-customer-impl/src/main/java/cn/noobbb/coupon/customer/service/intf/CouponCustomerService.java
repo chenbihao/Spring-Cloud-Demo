@@ -36,4 +36,12 @@ public interface CouponCustomerService {
      * 查询用户优惠券
      */
     List<CouponInfo> findCoupon(SearchCoupon request);
+
+
+    /**
+     * 删除券模板
+     */
+    void deleteCouponTemplate(Long templateId);
+
+
 }

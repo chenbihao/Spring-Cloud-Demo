@@ -68,7 +68,8 @@ seata:
     db:
       datasource: druid
       db-type: mysql
-      driver-class-name: com.mysql.jdbc.Driver
+      #driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://192.168.31.112:3306/seata_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&rewriteBatchedStatements=true
       user: seata
       password: seata112

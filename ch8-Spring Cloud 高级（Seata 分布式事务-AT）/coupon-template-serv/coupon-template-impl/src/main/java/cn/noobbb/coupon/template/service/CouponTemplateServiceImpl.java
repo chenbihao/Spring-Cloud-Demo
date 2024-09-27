@@ -8,6 +8,7 @@ import cn.noobbb.coupon.template.converter.CouponTemplateConverter;
 import cn.noobbb.coupon.template.dao.CouponTemplateDao;
 import cn.noobbb.coupon.template.dao.entity.CouponTemplate;
 import cn.noobbb.coupon.template.service.intf.CouponTemplateService;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,6 +124,7 @@ public class CouponTemplateServiceImpl implements CouponTemplateService {
      * @param id
      */
     @Override
+    @Transactional
     public void deleteTemplate(Long id) {
         int rows = templateDao.makeCouponUnavailable(id);
         if (rows==0) {
