@@ -176,10 +176,6 @@ public class CouponTemplateServiceImpl implements CouponTemplateServiceTCC {
         template.setLocked(true);
         templateDao.save(template);
 
-//        if (true) {
-//            throw new RuntimeException("Delete Template Failed");
-//        }
-
         log.info("TCC Try");
     }
 
@@ -191,10 +187,6 @@ public class CouponTemplateServiceImpl implements CouponTemplateServiceTCC {
 
         Long id = Long.parseLong(context.getActionContext("id").toString());
         CouponTemplate template = templateDao.findById(id).get();
-
-//        if (true) {
-//            throw new RuntimeException("Delete Template Failed");
-//        }
 
         // 解锁操作
         template.setLocked(false);
@@ -209,7 +201,7 @@ public class CouponTemplateServiceImpl implements CouponTemplateServiceTCC {
     @Transactional
     public void deleteTemplateCancel(BusinessActionContext context) {
 
-        // Cancel 阶段：如果在 Try 或者 Confirm 阶段发生了异常，就会触发 TCC 全局事务回滚，Seata Server 会将 Rollback 指令发送给每一个分支事务
+        // Cancel 阶段：如果在 Try 阶段发生了异常，就会触发 TCC 全局事务回滚，Seata Server 会将 Rollback 指令发送给每一个分支事务
 
         // 在线上业务中，Cancel 方法只能释放由当前 TCC 事务在 Try 阶段锁定的资源
 
