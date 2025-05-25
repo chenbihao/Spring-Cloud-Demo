@@ -30,7 +30,7 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <skywalking.version>9.3.0</skywalking.version>
+        <skywalking.version>9.4.0</skywalking.version>
     </properties>
 
     <!-- 定义为父级依赖，可将版本向下传递 -->
